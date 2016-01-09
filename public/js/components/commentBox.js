@@ -54,7 +54,7 @@ var CommentForm = React.createClass({
       <form className="commentForm" onSubmit={this.handleSubmit}>
         <input 
           type="text" 
-          placeholder="Your name"
+          placeholder="Your name here"
           value={this.state.author}
           onChange={this.handleAuthorChange}
         />
