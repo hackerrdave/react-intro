@@ -13,5 +13,10 @@
         "id": 1452297471159,
         "author": "Joe Smith",
         "text": "Happy Day!"
+    },
+    {
+        "id": 1452571217725,
+        "author": "Dave Kerr",
+        "text": "React Intro has been babelified!"
     }
 ]

@@ -3,8 +3,8 @@ var webpackConfigBuilder  = require('../webpack.config');
 var colors                = require('colors');
 var args                  = require('yargs').argv;
 
-process.env.NODE_ENV      = 'production';
-var webpackConfig         = webpackConfigBuilder('production');
+process.env.NODE_ENV      = 'development';
+var webpackConfig         = webpackConfigBuilder('development');
 
 webpack(webpackConfig).run((err, stats) => {
   var inSilentMode = args.s; //set to true when -s is passed
@@ -20,7 +20,7 @@ webpack(webpackConfig).run((err, stats) => {
 
   if (!inSilentMode) { console.log('Webpack stats: ', stats.toString()); }
 
-  console.log('Your app has compiled in production mode and written to /dist. Woot!'.green.bold);
+  console.log('Your app has compiled in development mode and written to /dist. Woot!'.green.bold);
   return 0;
 });
 

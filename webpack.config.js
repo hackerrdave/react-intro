@@ -10,7 +10,7 @@ var getPlugins = function(env) {
       plugins.push(new webpack.optimize.UglifyJsPlugin({minimize: true, sourceMap: true}));
       break;
     case 'development':
-      plugins.push(new webpack.optimize.HotModuleReplacementPlugin());
+      plugins.push(new webpack.HotModuleReplacementPlugin());
       plugins.push(new webpack.NoErrorsPlugin());
       break;
   }
@@ -22,12 +22,20 @@ var getLoaders = function(env) {
   return [
     { 
       test:     /\.js$/, 
-      include:  path.join(__dirname, 'src'), 
-      loaders:  ['babel', 'eslint']
+      exclude: '/node_modules/',
+      loader:  'babel',
+      query: {
+        presets: ['es2015', 'react']
+      }
+    },
+    { 
+      test:     /\.js$/, 
+      include:  path.join(__dirname, 'public'), 
+      loader:  'eslint',
     },
     { 
       test:     /(\.css|\.scss)$/,
-      include:  path.join(__dirname, 'src'),
+      include:  path.join(__dirname, 'public'),
       loaders:  ['style', 'css', 'sass'] 
     }
   ];
@@ -38,7 +46,7 @@ var getEntry = function(env) {
 
   if (env == 'development') { entry.push('webpack-hot-middleware/client'); }
 
-  entry.push('./src/index');
+  entry.push('./public/index');
   return entry;
 }
 

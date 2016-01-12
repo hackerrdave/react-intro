@@ -18,5 +18,4 @@ fs.readFile('public/index.html', 'utf8', function(err, data) {
   });
 
   console.log('index.html written to /dist'.green);
-}
-
+});
